@@ -4,6 +4,14 @@ export default {
   components: {
     AppHeader,
   },
+  created() {
+  const token = new URLSearchParams(window.location.search).get("token");
+
+  if (token) {
+    localStorage.setItem("token", token);
+    this.$router.push("/");
+  }
+},
 };
 </script>
 <template>

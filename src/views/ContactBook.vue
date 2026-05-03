@@ -2,6 +2,9 @@
     <div class="page row">
         <div class="col-md-10">
             <InputSearch v-model="searchText" />
+            <button class="btn btn-danger" @click="logout">
+                Đăng xuất
+            </button>
         </div>
         <div class="mt-3 col-md-6">
             <h4>
@@ -115,6 +118,10 @@ export default {
         goToAddContact() {
             this.$router.push({ name: "contact.add" });
         },
+        logout() {
+            localStorage.removeItem("token"); // 🔥 xóa token
+            this.$router.push("/login"); // 🔥 quay về login
+        }
     },
     mounted() {
         this.refreshList();

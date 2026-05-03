@@ -27,6 +27,13 @@
             </label>
         </div>
         <div class="form-group">
+            <label>Sở thích</label><br />
+
+            <input type="checkbox" value="Thể thao" v-model="contactLocal.hobbies" /> Thể thao
+            <input type="checkbox" value="Du lịch" v-model="contactLocal.hobbies" /> Du lịch
+            <input type="checkbox" value="Chơi game" v-model="contactLocal.hobbies" /> Chơi game
+        </div>
+        <div class="form-group">
             <button class="btn btn-primary">Lưu</button>
             <button v-if="contactLocal._id" type="button" class="ml-2 btn btn-danger" @click="deleteContact">
                 Xóa
@@ -72,7 +79,10 @@ export default {
         return {
             // Chúng ta sẽ không muốn hiệu chỉnh props, nên tạo biến cục bộ
             // contactLocal để liên kết với các input trên form
-            contactLocal: this.contact,
+            contactLocal: {
+                ...this.contact,
+                hobbies: this.contact.hobbies || []
+            },
             contactFormSchema,
         };
     },
@@ -85,7 +95,7 @@ export default {
         },
         Cancel() {
             const reply = window.confirm('You have unsaved changes! Do you want to leave ? ')
-if (!reply) {
+            if (!reply) {
                 // stay on the page if
                 // user clicks 'Cancel'
                 return false

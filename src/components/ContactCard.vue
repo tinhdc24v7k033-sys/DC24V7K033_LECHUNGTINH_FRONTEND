@@ -28,5 +28,11 @@ export default {
             <i v-if="contact.favorite" class="fas fa-check"></i>
             <i v-else class="fas fa-times"></i>
         </div>
+        <p>
+            <strong>Sở thích:</strong>
+            <span v-for="hobby in contact.hobbies" :key="hobby" class="badge bg-primary me-1">
+                {{ hobby }}
+            </span>
+        </p>
     </div>
 </template>
